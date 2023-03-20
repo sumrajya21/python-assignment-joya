@@ -1,0 +1,168 @@
+#ASSIGNMENT 1
+#SET TWO EXAMPLES
+#1 example:
+companies = {'Lacoste', 'Ralph Lauren'}
+tech_companies = ['apple', 'google', 'apple']
+
+companies.update(tech_companies)
+
+print(companies)
+
+Output: {'google', 'apple', 'Lacoste', 'Ralph Lauren'}
+
+#2 example:
+languages = {'Swift', 'Java', 'Python'}
+
+print('Initial Set:',languages)
+
+# remove 'Java' from a set
+removedValue = languages.discard('Java')
+
+print('Set after remove():', languages)
+
+Output:
+Initial Set: {'Python', 'Swift', 'Java'}
+Set after remove(): {'Python', 'Swift'}
+
+#LIST TWO EXAMPLES
+#1 example:
+# Declaring a list
+list = [10, 20, 30, 40, 50]
+
+# printing without using FOR and IN
+print "List elements are: ", list
+print " " # prints new line
+
+# printing using FOR and IN
+print "List elements are: "
+
+for L in list:
+	print L 
+
+print " " # prints new line
+
+# calculating Sum of all elements
+sum = 0 
+for L in list:
+	sum += L 
+print("Sum is: ", sum)
+
+Output:
+
+    List elements are:  [10, 20, 30, 40, 50]
+ 
+    List elements are: 
+    10
+    20
+    30
+    40
+    50
+ 
+    Sum is:  150
+#2 example:
+# declare and assign list1
+list1 = [11, 22, 33, 44, 55]
+
+# declare listOdd - to store odd numbers
+# declare listEven - to store even numbers
+listOdd = []
+listEven = []
+
+# check and append odd numbers in listOdd
+# and even numbers in listEven
+for num in list1:
+	if num%2 == 0:
+		listEven.append(num)
+	else:
+		listOdd.append(num) 
+
+# print lists
+print "list1:    ", list1 
+print "listEven: ", listEven
+print "listOdd:  ", listOdd
+
+Output:
+
+    list1:     [11, 22, 33, 44, 55]
+    listEven:  [22, 44]
+    listOdd:   [11, 33, 55]
+#TUPLES TWO EXAMPLE
+#1 example:
+x = 19
+y = 91
+print('Before swapping:')
+print(f'x = {x}, y = {y}')
+(x, y) = (y, x)
+print('After swapping:')
+print(f'x = {x}, y = {y}')
+
+output:
+Before swapping:
+x = 19, y = 91
+After swapping:
+x = 91, y = 19
+#2 example:
+def sum_and_avg(x, y, z):
+    s = x + y + z
+    a = s/3
+    return(s, a)
+(S, A) = sum_and_avg(3, 8, 5)
+print('Sum =', S)
+print('Avg =', A)
+
+output:
+Sum = 16
+Avg = 5.333333333333333
+#DICTIONARY TWO EXAMPLES
+#1 example:
+import itertools      
+d ={'1':['a','b'], '2':['c','d']}
+for combo in itertools.product(*[d[k] for k in sorted(d.keys())]):
+    print(''.join(combo))
+	
+Output:
+ac                                                                                                            
+ad                                                                                                            
+bc                                                                                                            
+bd
+#2 example:
+L = [{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]
+print("Original List: ",L)
+u_value = set( val for dic in L for val in dic.values())
+print("Unique Values: ",u_value)
+
+Output:
+
+Original List:  [{'V': 'S001'}, {'V': 'S002'}, {'VI': 'S001'}, {'VI': 'S005'}, {'VII': 'S005'}, {'V': 'S009'},
+ {'VIII': 'S007'}]                                                                                            
+Unique Values:  {'S009', 'S002', 'S007', 'S005', 'S001'}
+
+#ASSIGNMENT 2
+
+w+ mode example:
+f = open("students6.txt", "w+")  #1
+f.write("First Line\n")                  
+f.write("Second Line\n")
+f.write("Third Line\n")
+print(f.tell())
+f.seek(0)
+f.write("4 Line")
+f.seek(0)
+print(f.read(10))
+print(f.tell())
+f.write("5 Line")    
+f.seek(0)
+print("after adding:\n",f.read())
+f.close()
+
+
+r+ mode example:
+with open('sample.txt','r+') as fd:
+    print(fd.read())
+    
+    
+a+ mode example:
+with open('file.txt', 'a+') as f:
+    f.seek(0)                       # file pointer at end, move to beginning
+    lines = f.readlines()           # read all and file pointer at end again
+    f.write("\n" + str(len(lines))) # append number of lines to a file
